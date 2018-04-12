@@ -14,11 +14,15 @@ go get github.com/daisuke310vvv/infura-go
 config := infura.NewConfig("<INFURA API KEY>", infura.Ropsten)
 infuraClient := infura.New(config)
 
-req, resp := infuraClient.EthBlockNumberRequest(nil)
+input := &infura.EthGetBalanceInput{
+    Address:        "0x5c66b0d82df26e8FE165Be6628F5f5e1f1bccD5C",
+    BlockParameter: infura.NewBlockParameter("latest"),
+}
+req, resp := infuraClient.EthGetBalanceRequest(input)
 _ = req.Call()
 
 fmt.Println(res.Result)
-// => 0x2e2b9a
+// => 0x7759d50972e9800
 ```
 
 ## Test  
