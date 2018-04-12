@@ -70,5 +70,10 @@ $ go test *_test.go -apiKey="<INFURA API KEY>"
 - `eth_getUncleByBlockHashAndIndex`
 - `eth_getUncleByBlockNumberAndIndex`
 
+## Donation  
+Donations help me keep this development❤️  
+Send me eth to `0x5c66b0d82df26e8FE165Be6628F5f5e1f1bccD5C`
+
+
 ## License  
 `infura-go` is available under the MIT license. See the LICENSE file for more info.
