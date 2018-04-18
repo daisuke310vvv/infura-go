@@ -11,7 +11,7 @@ go get github.com/daisuke310vvv/infura-go
 ## How to use  
 
 ```
-config := infura.NewConfig("<INFURA API KEY>", infura.Ropsten)
+config, _ := infura.NewConfig("<INFURA API KEY>", infura.Ropsten)
 infuraClient := infura.New(config)
 
 input := &infura.EthGetBalanceInput{
