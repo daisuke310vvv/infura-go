@@ -5,6 +5,15 @@ type input interface {
 	params() interface{}
 }
 
+type Error struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+}
+
+func (e *Error) Error() string {
+	return e.Message
+}
+
 type Web3ClientVersionInput struct {
 }
 
@@ -17,6 +26,7 @@ func (i *Web3ClientVersionInput) params() interface{} {
 }
 
 type Web3ClientVersionOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -43,6 +53,7 @@ func (i *Web3Sha3Input) params() interface{} {
 }
 
 type Web3Sha3Output struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -68,6 +79,7 @@ func (i *NetVersionInput) params() interface{} {
 }
 
 type NetVersionOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -93,7 +105,8 @@ func (i *NetListeningInput) params() interface{} {
 }
 
 type NetListeningOutput struct {
-	Result bool `json:"result"`
+	Error  *Error `json:"error"`
+	Result bool   `json:"result"`
 }
 
 func (i *Infura) NetListeningRequest(input *NetListeningInput) (req *Request, output *NetListeningOutput) {
@@ -118,6 +131,7 @@ func (i *NetPeerCountInput) params() interface{} {
 }
 
 type NetPeerCountOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -143,6 +157,7 @@ func (i *EthProtocolVersionInput) params() interface{} {
 }
 
 type EthProtocolVersionOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -168,6 +183,7 @@ func (i *EthSyncingInput) params() interface{} {
 }
 
 type EthSyncingOutput struct {
+	Error *Error `json:"error"`
 	// Result
 	/*
 		{
@@ -207,7 +223,8 @@ func (i *EthMiningInput) params() interface{} {
 }
 
 type EthMiningOutput struct {
-	Result bool `json:"result"`
+	Error  *Error `json:"error"`
+	Result bool   `json:"result"`
 }
 
 func (i *Infura) EthMiningRequest(input *EthMiningInput) (req *Request, output *EthMiningOutput) {
@@ -232,6 +249,7 @@ func (i *EthHashrateInput) params() interface{} {
 }
 
 type EthHashrateOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -257,6 +275,7 @@ func (i *EthGasPriceInput) params() interface{} {
 }
 
 type EthGasPriceOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -282,6 +301,7 @@ func (i *EthAccountsInput) params() interface{} {
 }
 
 type EthAccountsOutput struct {
+	Error  *Error   `json:"error"`
 	Result []string `json:"result"`
 }
 
@@ -307,6 +327,7 @@ func (i *EthBlockNumberInput) params() interface{} {
 }
 
 type EthBlockNumberOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -334,6 +355,7 @@ func (i *EthGetBalanceInput) params() interface{} {
 }
 
 type EthGetBalanceOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -361,6 +383,7 @@ func (i *EthGetTransactionCountInput) params() interface{} {
 }
 
 type EthGetTransactionCountOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -387,6 +410,7 @@ func (i *EthGetBlockTransactionCountByHashInput) params() interface{} {
 }
 
 type EthGetBlockTransactionCountByHashOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -413,6 +437,7 @@ func (i *EthGetBlockTransactionCountByNumberInput) params() interface{} {
 }
 
 type EthGetBlockTransactionCountByNumberOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -439,6 +464,7 @@ func (i *EthGetUncleCountByBlockHashInput) params() interface{} {
 }
 
 type EthGetUncleCountByBlockHashOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -465,6 +491,7 @@ func (i *EthGetUncleCountByBlockNumberInput) params() interface{} {
 }
 
 type EthGetUncleCountByBlockNumberOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -492,6 +519,7 @@ func (i *EthGetCodeInput) params() interface{} {
 }
 
 type EthGetCodeOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -518,6 +546,7 @@ func (i *EthSendRawTransactionInput) params() interface{} {
 }
 
 type EthSendRawTransactionOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -545,6 +574,7 @@ func (i *EthCallInput) params() interface{} {
 }
 
 type EthCallOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -571,6 +601,7 @@ func (i *EthEstimateGasInput) params() interface{} {
 }
 
 type EthEstimateGasOutput struct {
+	Error  *Error `json:"error"`
 	Result string `json:"result"`
 }
 
@@ -598,7 +629,8 @@ func (i *EthGetBlockByHashInput) params() interface{} {
 }
 
 type EthGetBlockByHashOutput struct {
-	Result Block `json:"result"`
+	Error  *Error `json:"error"`
+	Result Block  `json:"result"`
 }
 
 func (i *Infura) EthGetBlockByHashRequest(input *EthGetBlockByHashInput) (req *Request, output *EthGetBlockByHashOutput) {
@@ -625,7 +657,8 @@ func (i *EthGetBlockByNumberInput) params() interface{} {
 }
 
 type EthGetBlockByNumberOutput struct {
-	Result Block `json:"result"`
+	Error  *Error `json:"error"`
+	Result Block  `json:"result"`
 }
 
 func (i *Infura) EthGetBlockByNumberRequest(input *EthGetBlockByNumberInput) (req *Request, output *EthGetBlockByNumberOutput) {
@@ -651,6 +684,7 @@ func (i *EthGetTransactionByHashInput) params() interface{} {
 }
 
 type EthGetTransactionByHashOutput struct {
+	Error  *Error         `json:"error"`
 	Result RawTransaction `json:"result"`
 }
 
@@ -678,6 +712,7 @@ func (i *EthGetTransactionByBlockHashAndIndexInput) params() interface{} {
 }
 
 type EthGetTransactionByBlockHashAndIndexOutput struct {
+	Error  *Error         `json:"error"`
 	Result RawTransaction `json:"result"`
 }
 
@@ -705,6 +740,7 @@ func (i *EthGetTransactionByBlockNumberAndIndexInput) params() interface{} {
 }
 
 type EthGetTransactionByBlockNumberAndIndexOutput struct {
+	Error  *Error         `json:"error"`
 	Result RawTransaction `json:"result"`
 }
 
@@ -731,6 +767,7 @@ func (i *EthGetTransactionReceiptInput) params() interface{} {
 }
 
 type EthGetTransactionReceiptOutput struct {
+	Error  *Error             `json:"error"`
 	Result TransactionReceipt `json:"result"`
 }
 
@@ -758,7 +795,8 @@ func (i *EthGetUncleByBlockHashAndIndexInput) params() interface{} {
 }
 
 type EthGetUncleByBlockHashAndIndexOutput struct {
-	Result Block `json:"result"`
+	Error  *Error `json:"error"`
+	Result Block  `json:"result"`
 }
 
 func (i *Infura) EthGetUncleByBlockHashAndIndexRequest(input *EthGetUncleByBlockHashAndIndexInput) (req *Request, output *EthGetUncleByBlockHashAndIndexOutput) {
@@ -785,7 +823,8 @@ func (i EthGetUncleByBlockNumberAndIndexInput) params() interface{} {
 }
 
 type EthGetUncleByBlockNumberAndIndexOutput struct {
-	Result Block `json:"result"`
+	Error  *Error `json:"error"`
+	Result Block  `json:"result"`
 }
 
 func (i *Infura) EthGetUncleByBlockNumberAndIndexRequest(input *EthGetUncleByBlockNumberAndIndexInput) (req *Request, output *EthGetUncleByBlockNumberAndIndexOutput) {

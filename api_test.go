@@ -19,10 +19,14 @@ func TestApi(t *testing.T) {
 		t.Fatalf(err.Error())
 	}
 
-	req, resp := cli.EthBlockNumberRequest(nil)
+	req, resp := cli.EthGetBalanceRequest(&infura.EthGetBalanceInput{Address: "0x5c66b0d82df26e8FE165Be6628F5f5e1f1bccD5C", BlockParameter: infura.NewBlockParameter("latest")})
 	err = req.Call()
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
-	t.Logf("block number: %v", resp.Result)
+	if resp.Error != nil {
+		t.Fatalf(resp.Error.Error())
+	}
+
+	t.Logf("balance: %v", resp.Result)
 }
