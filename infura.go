@@ -20,3 +20,7 @@ func New(config *Config) (*Infura, error) {
 
 	return infura, nil
 }
+
+func (i *Infura) CurrentNetwork() Network {
+	return i.network
+}
