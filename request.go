@@ -51,7 +51,6 @@ func (i *Infura) newRequest(input input, output interface{}) (req *Request) {
 	if err != nil {
 		body = []byte{}
 	}
-	fmt.Println(string(body))
 
 	httpReq, err := http.NewRequest("POST", i.network.URL()+i.apiKey, bytes.NewReader(body))
 

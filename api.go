@@ -570,7 +570,7 @@ func (i *EthCallInput) method() string {
 }
 
 func (i *EthCallInput) params() interface{} {
-	return []interface{}{i.Transaction.ToMap(), i.BlockParameter.Value}
+	return []interface{}{i.Transaction.toMap(), i.BlockParameter.Value}
 }
 
 type EthCallOutput struct {
@@ -597,7 +597,7 @@ func (i *EthEstimateGasInput) method() string {
 }
 
 func (i *EthEstimateGasInput) params() interface{} {
-	return []interface{}{i.Transaction.ToMap()}
+	return []interface{}{i.Transaction.toMap()}
 }
 
 type EthEstimateGasOutput struct {
@@ -708,7 +708,7 @@ func (i *EthGetTransactionByBlockHashAndIndexInput) method() string {
 }
 
 func (i *EthGetTransactionByBlockHashAndIndexInput) params() interface{} {
-	return []string{i.Hash, "0x" + ToHexString(i.Position)}
+	return []string{i.Hash, "0x" + toHexString(i.Position)}
 }
 
 type EthGetTransactionByBlockHashAndIndexOutput struct {
@@ -736,7 +736,7 @@ func (i *EthGetTransactionByBlockNumberAndIndexInput) method() string {
 }
 
 func (i *EthGetTransactionByBlockNumberAndIndexInput) params() interface{} {
-	return []string{i.BlockParameter.Value, "0x" + ToHexString(i.Position)}
+	return []string{i.BlockParameter.Value, "0x" + toHexString(i.Position)}
 }
 
 type EthGetTransactionByBlockNumberAndIndexOutput struct {
@@ -791,7 +791,7 @@ func (i *EthGetUncleByBlockHashAndIndexInput) method() string {
 }
 
 func (i *EthGetUncleByBlockHashAndIndexInput) params() interface{} {
-	return []string{i.Hash, "0x" + ToHexString(i.Position)}
+	return []string{i.Hash, "0x" + toHexString(i.Position)}
 }
 
 type EthGetUncleByBlockHashAndIndexOutput struct {
@@ -819,7 +819,7 @@ func (i EthGetUncleByBlockNumberAndIndexInput) method() string {
 }
 
 func (i EthGetUncleByBlockNumberAndIndexInput) params() interface{} {
-	return []string{i.BlockParameter.Value, "0x" + ToHexString(i.Position)}
+	return []string{i.BlockParameter.Value, "0x" + toHexString(i.Position)}
 }
 
 type EthGetUncleByBlockNumberAndIndexOutput struct {
