@@ -12,5 +12,5 @@ func NewBlockParameter(status string) BlockParameter {
 }
 
 func NewBlockParameterWithNumber(n int) BlockParameter {
-	return BlockParameter{Value: "0x" + ToHexString(n)}
+	return BlockParameter{Value: "0x" + toHexString(n)}
 }
