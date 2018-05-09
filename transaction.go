@@ -5,7 +5,7 @@ import "fmt"
 type Transaction struct {
 	From     string  `json:"from"`
 	Gas      string  `json:"gas"`
-	GasPrice *string `json:"gas_price"`
+	GasPrice *string `json:"gasPrice"`
 	To       *string `json:"to"`
 	Value    *string `json:"value"`
 	Data     string  `json:"data"`
@@ -43,14 +43,14 @@ func (tx *Transaction) String() string {
 
 type RawTransaction struct {
 	Transaction
-	BlockHash        string `json:"block_hash"`
-	BlockNumber      string `json:"block_number"`
+	BlockHash        string `json:"blockHash"`
+	BlockNumber      string `json:"blockNumber"`
 	Hash             string `json:"hash"`
 	Input            string `json:"input"`
 	Nonce            string `json:"nonce"`
 	R                string `json:"r"`
 	S                string `json:"s"`
-	TransactionIndex string `json:"transaction_index"`
+	TransactionIndex string `json:"transactionIndex"`
 	V                string `json:"v"`
 
 	// Parity only

@@ -3,7 +3,6 @@ package infura
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -29,7 +28,6 @@ func (r *Request) Call() error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(string(bodyBytes))
 
 	err = json.Unmarshal(bodyBytes, r.Data)
 	if err != nil {
