@@ -43,15 +43,15 @@ func (tx *Transaction) String() string {
 
 type RawTransaction struct {
 	Transaction
-	BlockHash        string `json:"blockHash"`
-	BlockNumber      string `json:"blockNumber"`
-	Hash             string `json:"hash"`
-	Input            string `json:"input"`
-	Nonce            string `json:"nonce"`
-	R                string `json:"r"`
-	S                string `json:"s"`
-	TransactionIndex string `json:"transactionIndex"`
-	V                string `json:"v"`
+	BlockHash        string  `json:"blockHash"`
+	BlockNumber      *string `json:"blockNumber"`
+	Hash             string  `json:"hash"`
+	Input            string  `json:"input"`
+	Nonce            string  `json:"nonce"`
+	R                string  `json:"r"`
+	S                string  `json:"s"`
+	TransactionIndex string  `json:"transactionIndex"`
+	V                string  `json:"v"`
 
 	// Parity only
 	// Condition *string `json:"condition"`
