@@ -5,17 +5,17 @@ import (
 )
 
 type Infura struct {
-	id      uint
-	apiKey  string
-	network Network
-	client  *http.Client
+	id        uint
+	projectID string
+	network   Network
+	client    *http.Client
 }
 
 func New(config *Config) (*Infura, error) {
 	infura := &Infura{
-		apiKey:  config.ApiKey,
-		network: config.Network,
-		client:  http.DefaultClient,
+		projectID: config.ProjectID,
+		network:   config.Network,
+		client:    http.DefaultClient,
 	}
 
 	return infura, nil

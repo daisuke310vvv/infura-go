@@ -1,13 +1,13 @@
 package infura
 
 type Config struct {
-	ApiKey  string
-	Network Network
+	ProjectID string
+	Network   Network
 }
 
-func NewConfig(apiKey string, network Network) *Config {
+func NewConfig(projectID string, network Network) *Config {
 	return &Config{
-		ApiKey:  apiKey,
-		Network: network,
+		ProjectID: projectID,
+		Network:   network,
 	}
 }

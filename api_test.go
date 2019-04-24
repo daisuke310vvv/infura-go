@@ -7,14 +7,14 @@ import (
 	infura "github.com/daisuke310vvv/infura-go"
 )
 
-var apiKey = flag.String("apiKey", "", "api key for call infura.io APIs")
+var projectID = flag.String("projectID", "", "project id for call infura.io APIs")
 
 func TestApi(t *testing.T) {
-	if apiKey == nil || *apiKey == "" {
-		t.Fatalf("No apiKey found.")
+	if projectID == nil || *projectID == "" {
+		t.Fatalf("No projectID found.")
 	}
 
-	cli, err := infura.New(infura.NewConfig(*apiKey, infura.Ropsten))
+	cli, err := infura.New(infura.NewConfig(*projectID, infura.Ropsten))
 	if err != nil {
 		t.Fatalf(err.Error())
 	}

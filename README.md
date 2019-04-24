@@ -29,7 +29,7 @@ fmt.Println(res.Result)
 **NOTE**: Be careful many api calls will be restricted.  
 
 ```
-$ go test *_test.go -apiKey="<INFURA API KEY>"
+$ go test *_test.go -projectID="<INFURA PROJECT ID>"
 ```
 
 ## TODO  

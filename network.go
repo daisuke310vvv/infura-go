@@ -12,13 +12,13 @@ const (
 func (n Network) URL() string {
 	switch n {
 	case Mainnet:
-		return "https://mainnet.infura.io/"
+		return "https://mainnet.infura.io/v3/"
 	case Ropsten:
-		return "https://ropsten.infura.io/"
+		return "https://ropsten.infura.io/v3/"
 	case Kovan:
-		return "https://kovan.infura.io/"
+		return "https://kovan.infura.io/v3/"
 	case Rinkeby:
-		return "https://rinkeby.infura.io/"
+		return "https://rinkeby.infura.io/v3/"
 	default:
 		return ""
 	}
