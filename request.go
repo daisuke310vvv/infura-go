@@ -8,6 +8,7 @@ import (
 )
 
 type Request struct {
+	Client  *http.Client
 	Request *http.Request
 	Error   error
 	Data    interface{}
@@ -18,7 +19,7 @@ func (r *Request) Call() error {
 		return r.Error
 	}
 
-	resp, err := http.DefaultClient.Do(r.Request)
+	resp, err := r.Client.Do(r.Request)
 	if err != nil {
 		return err
 	}
@@ -37,6 +38,10 @@ func (r *Request) Call() error {
 	return nil
 }
 
+func (r *Request) WithClient(client *http.Client) {
+	r.Client = client
+}
+
 func (i *Infura) newRequest(input input, output interface{}) (req *Request) {
 	args := map[string]interface{}{
 		"jsonrpc": "2.0",
@@ -53,6 +58,7 @@ func (i *Infura) newRequest(input input, output interface{}) (req *Request) {
 	httpReq, err := http.NewRequest("POST", i.network.URL()+i.projectID, bytes.NewReader(body))
 
 	req = &Request{
+		Client:  http.DefaultClient,
 		Request: httpReq,
 		Error:   err,
 		Data:    output,
